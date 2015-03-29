@@ -27,10 +27,13 @@ public class FFTPerformer
         int numRead;
         while (true)
         {
-            numRead = in.read(buf, 0, buf.length);
+
+            numRead = in.read(buf, 0, 4096);
             if (numRead == -1) break;
 
             Complex[] data = makeComplex(buf);
+            int pos = 0;
+
             doFFT(data);
         }
     }
@@ -69,11 +72,12 @@ public class FFTPerformer
         for(int i = 0; i < 40; i++)
         {
             Data dat = list.get(i);
-            if(dat.index >= 5000)
+            if (dat.index >= 5000)
                 continue;
 
-            System.out.println(dat.index); // 1/32 of a buffer
+            System.out.println(dat.index);
         }
 
+        System.out.println();
     }
 }

@@ -53,16 +53,17 @@ public class SongWave {
         System.out.println(a);
         for(int i = 0; i < samps; i++)
         {
-            buf[i] = (byte)(127 * Math.cos(i * (2 * Math.PI * freq / (format.getSampleRate()))));
+            buf[i] = (byte)(127 * Math.sin(i * (2 * Math.PI * freq / (format.getSampleRate()))));
         }
         out.write(buf, 0, buf.length);
         out.flush();
     }
 
     public static void main(String[] args) throws Exception {
-        SongWave s = new SongWave(1000);
-        s.writeToFile(100, 25);
-        s.writeToFile(440, 25);
+        SongWave s = new SongWave(131072);
+        //s.writeToFile(0, 25);
+        s.writeToFile(440, 2048);
+        s.writeToFile(250, 6144);
 
         s.out.close();
         /*while(true) {
