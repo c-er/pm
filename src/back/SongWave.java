@@ -1,9 +1,6 @@
 package back;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.*;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 
@@ -59,41 +56,102 @@ public class SongWave {
         out.flush();
     }
 
+    public void song1()
+    {
+        this.play(392, 200);
+        this.play(392, 200);
+        this.play(587, 200);
+        this.play(698, 200);
+        this.play(784, 200);
+        this.play(523, 200);
+        this.play(587, 200);
+        this.play(392, 400);
+        this.play(392, 200);
+        this.play(523, 200);
+        this.play(392, 200);
+        this.play(466, 200);
+        this.play(392, 200);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(349, 200);
+        this.play(466, 200);
+        this.play(523, 200);
+        this.play(698, 400);
+        this.play(659, 200);
+        this.play(589, 200);
+        this.play(659, 400);
+        this.play(466, 200);
+        this.play(523, 200);
+        this.play(659, 400);
+        this.play(587, 200);
+        this.play(523, 200);
+        this.play(466, 200);
+    }
+
     public static void main(String[] args) throws Exception {
-        SongWave s = new SongWave(1000);
+        /*SongWave s = new SongWave(1000);
 
 
 
-        s.writeToFile(392, 200);
-        s.writeToFile(392, 200);
-        s.writeToFile(587, 200);
-        s.writeToFile(698, 200);
-        s.writeToFile(784, 200);
-        s.writeToFile(523, 200);
-        s.writeToFile(587, 200);
-        s.writeToFile(392, 400);
-        s.writeToFile(392, 200);
-        s.writeToFile(523, 200);
-        s.writeToFile(392, 200);
-        s.writeToFile(466, 200);
-        s.writeToFile(392, 200);
-        s.writeToFile(440, 200);
-        s.writeToFile(466, 200);
-        s.writeToFile(349, 200);
-        s.writeToFile(466, 200);
-        s.writeToFile(523, 200);
-        s.writeToFile(698, 400);
-        s.writeToFile(659, 200);
-        s.writeToFile(589, 200);
-        s.writeToFile(659, 400);
-        s.writeToFile(466, 200);
-        s.writeToFile(523, 200);
-        s.writeToFile(659, 400);
-        s.writeToFile(587, 200);
-        s.writeToFile(523, 200);
-        s.writeToFile(466, 200);
+        s.play(392, 200);
+        s.play(392, 200);
+        s.play(587, 200);
+        s.play(698, 200);
+        s.play(784, 200);
+        s.play(523, 200);
+        s.play(587, 200);
+        s.play(392, 400);
+        s.play(392, 200);
+        s.play(523, 200);
+        s.play(392, 200);
+        s.play(466, 200);
+        s.play(392, 200);
+        s.play(440, 200);
+        s.play(466, 200);
+        s.play(349, 200);
+        s.play(466, 200);
+        s.play(523, 200);
+        s.play(698, 400);
+        s.play(659, 200);
+        s.play(589, 200);
+        s.play(659, 400);
+        s.play(466, 200);
+        s.play(523, 200);
+        s.play(659, 400);
+        s.play(587, 200);
+        s.play(523, 200);
+        s.play(466, 200);
 
-        s.out.close();
+        s.out.close();*/
+        TargetDataLine line = null;
+        AudioFormat format = new AudioFormat(131072, 8, 1, true, false);
+        DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
+
+        // System.out.println("Step1");
+
+        if (!AudioSystem.isLineSupported(info)) {
+            System.out.println("Too high sample rate");
+            System.exit(-2);
+        }
+        // System.out.println("Step2");
+
+        line = (TargetDataLine) AudioSystem.getLine(info);
+        line.open(format);
+        line.start();
+
+        System.out.println("Buf: " + line.getBufferSize());
+
+        byte[] buf = new byte[line.getBufferSize() / 5];
+
+
+        while(true)
+        {
+            line.read(buf, 0, buf.length);
+            for(int i = 0; i < buf.length; i++)
+            {
+                System.out.println(buf[i]);
+            }
+        }
 
     }
 }

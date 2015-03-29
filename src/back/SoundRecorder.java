@@ -20,6 +20,7 @@ public class SoundRecorder extends JFrame implements ActionListener {
     static Recorder r;
     public SoundRecorder()
     {
+        NoteDictionary.populate();
         this.setSize(400, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -61,6 +62,20 @@ public class SoundRecorder extends JFrame implements ActionListener {
             {
                 b.setText("Stop");
                 r.start();
+                SongWave s = new SongWave(1250);
+
+                s.song1();
+                try {
+                    s.out.close();
+                } catch (Exception a) {}
+                r.go = false;
+                b.setText("Start");
+
+                try {
+                    new FFTPerformer().doWork();
+                } catch (Exception a) {}
+
+
             }
             else
             {

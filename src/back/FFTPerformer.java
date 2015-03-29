@@ -5,27 +5,41 @@ import org.apache.commons.math3.transform.DftNormalization;
 import org.apache.commons.math3.transform.FastFourierTransformer;
 import org.apache.commons.math3.transform.TransformType;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class FFTPerformer
 {
     public FastFourierTransformer fft = new FastFourierTransformer(DftNormalization.STANDARD);
+    public PrintWriter out;
 
     public static void main(String[] args) throws Exception
     {
         NoteDictionary.populate();
+
         new FFTPerformer().doWork();
     }
 
+    public String filter(String note)
+    {
+        if(note.equals("CN0"))
+        {
+            return "";
+        }
+        return note + "\n";
+    }
+
+
     public void doWork() throws Exception
     {
-        BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound2.rws"));
+        out = new PrintWriter(new BufferedWriter(new FileWriter("sound.fft")));
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound.rws"));
         byte[] buf = new byte[131072];
 
         int numRead;
+        String prev = "";
+        String tot = "";
         while (true)
         {
 
@@ -35,8 +49,18 @@ public class FFTPerformer
             Complex[] data = makeComplex(buf);
             int pos = 0;
 
-            doFFT(data);
+            String freq = doFFT(data);
+            System.out.println(freq);
+            if(!prev.equals(freq))
+            {
+                out.print(filter(freq));
+            }
+            prev = freq;
         }
+
+
+        out.close();
+
     }
 
     public Complex[] makeComplex(byte[] data)
@@ -56,7 +80,7 @@ public class FFTPerformer
         return 0.54 - 0.46 * Math.cos(2.0 * Math.PI * (double) n / (double) (frameSize - 1));
     }
 
-    public void doFFT(Complex[] data)
+    public String doFFT(Complex[] data) throws Exception
     {
         Complex[] fftRes = fft.transform(data, TransformType.FORWARD);
         ArrayList<Data> list = new ArrayList<Data>();
@@ -69,18 +93,23 @@ public class FFTPerformer
             list.add(new Data(mag, i));
         }
 
+
+
         Collections.sort(list);
-        for(int i = 0; i < 40; i++)
+        String j = "";
+        for(int i = 0; i < 5; i++)
         {
             Data dat = list.get(i);
             if (dat.index >= 5000)
                 continue;
             else {
-                System.out.println(NoteDictionary.getNote(dat.index));
+                //out.println(NoteDictionary.getNote(dat.index));
+                //System.out.println(NoteDictionary.getNote(dat.index));
+                j = NoteDictionary.getNote(dat.index);
                 break;
             }
         }
-
-        System.out.println();
+        //out.flush();
+        return j;
     }
 }

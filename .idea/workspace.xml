@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="713719b6-c6f4-4830-bf2d-156ef4b7cfcc" name="Default" comment="40% done">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/back/Note.java" afterPath="" />
+    <list default="true" id="713719b6-c6f4-4830-bf2d-156ef4b7cfcc" name="Default" comment="added notedictionary">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/back/FFTPerformer.java" afterPath="$PROJECT_DIR$/src/back/FFTPerformer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/back/NoteDictionary.java" afterPath="$PROJECT_DIR$/src/back/NoteDictionary.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/back/SongWave.java" afterPath="$PROJECT_DIR$/src/back/SongWave.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/back/SoundRecorder.java" afterPath="$PROJECT_DIR$/src/back/SoundRecorder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectM.iws" />
@@ -34,8 +34,8 @@
       <file leaf-file-name="FFTPerformer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/back/FFTPerformer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68235296" vertical-offset="955" max-vertical-offset="1380">
-              <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
+            <state vertical-scroll-proportion="1.6705883" vertical-offset="145" max-vertical-offset="1815">
+              <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,21 +46,11 @@
       <file leaf-file-name="SongWave.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/back/SongWave.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="732" max-vertical-offset="1575">
-              <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="820" max-vertical-offset="2445">
+              <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NoteDictionary.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/back/NoteDictionary.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1695">
-              <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -75,6 +65,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SoundRecorder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/back/SoundRecorder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2385">
+              <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+              <folding>
+                <element signature="e#2323#2324#0" expanded="true" />
+                <element signature="e#2348#2349#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -83,10 +86,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/back/SongWave.java" />
         <option value="$PROJECT_DIR$/src/back/SoundPlayer.java" />
         <option value="$PROJECT_DIR$/src/back/Note.java" />
         <option value="$PROJECT_DIR$/src/back/NoteDictionary.java" />
+        <option value="$PROJECT_DIR$/src/back/SongWave.java" />
+        <option value="$PROJECT_DIR$/src/back/SoundRecorder.java" />
         <option value="$PROJECT_DIR$/src/back/FFTPerformer.java" />
       </list>
     </option>
@@ -216,7 +220,7 @@
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
   </component>
-  <component name="RunManager" selected="Application.FFTPerformer">
+  <component name="RunManager" selected="Application.SoundRecorder">
     <configuration default="false" name="SongWave" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -286,6 +290,28 @@
     <configuration default="false" name="NoteDictionary" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="NoteDictionary" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ProjectM" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SoundRecorder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="back.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="back.SoundRecorder" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -454,18 +480,20 @@
       <listeners />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.SongWave" />
       <item index="1" class="java.lang.String" itemvalue="Application.SoundPlayer" />
       <item index="2" class="java.lang.String" itemvalue="Application.FFTPerformer" />
       <item index="3" class="java.lang.String" itemvalue="Application.NoteDictionary" />
+      <item index="4" class="java.lang.String" itemvalue="Application.SoundRecorder" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.FFTPerformer" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.SoundRecorder" />
         <item index="1" class="java.lang.String" itemvalue="Application.SongWave" />
-        <item index="2" class="java.lang.String" itemvalue="Application.NoteDictionary" />
-        <item index="3" class="java.lang.String" itemvalue="Application.SoundPlayer" />
+        <item index="2" class="java.lang.String" itemvalue="Application.FFTPerformer" />
+        <item index="3" class="java.lang.String" itemvalue="Application.NoteDictionary" />
+        <item index="4" class="java.lang.String" itemvalue="Application.SoundPlayer" />
       </list>
     </recent_temporary>
   </component>
@@ -475,6 +503,11 @@
     </option>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -504,7 +537,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427594639822</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added notedictionary">
+      <created>1427596064143</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1427596064143</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -559,7 +598,8 @@
     <MESSAGE value="added song playing" />
     <MESSAGE value="added song playing with file writing" />
     <MESSAGE value="40% done" />
-    <option name="LAST_COMMIT_MESSAGE" value="40% done" />
+    <MESSAGE value="added notedictionary" />
+    <option name="LAST_COMMIT_MESSAGE" value="added notedictionary" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -650,14 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/back/SoundPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <caret line="17" column="84" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/back/NoteDictionary.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1695">
@@ -666,10 +698,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/back/SoundPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+          <caret line="17" column="84" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/back/SoundRecorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2385">
+          <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+          <folding>
+            <element signature="e#2323#2324#0" expanded="true" />
+            <element signature="e#2348#2349#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/back/SongWave.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="732" max-vertical-offset="1575">
-          <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="820" max-vertical-offset="2445">
+          <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -678,8 +729,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/back/FFTPerformer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68235296" vertical-offset="955" max-vertical-offset="1380">
-          <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
+        <state vertical-scroll-proportion="1.6705883" vertical-offset="145" max-vertical-offset="1815">
+          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
