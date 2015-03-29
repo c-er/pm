@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ProjectM:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProjectM_jar</output-path>
+    <root id="archive" name="ProjectM.jar">
+      <element id="module-output" name="ProjectM" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/commons-math3-3.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/abc4j_v0.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

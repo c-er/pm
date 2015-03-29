@@ -1,2 +1,4 @@
 # Project M
-Song transcription and music collaboration client
+Song transcription client
+Download the jarfile called ProjectM.jar and run "java -jar ProjectM.jar" or double click on the file
+
