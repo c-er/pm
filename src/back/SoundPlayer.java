@@ -15,7 +15,7 @@ public class SoundPlayer
         System.out.println("Press ENTER to start: ");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
-        BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound.rws"));
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound2.rws"));
 
         AudioFormat format = new AudioFormat(131072, 8, 1, true, false);
         SourceDataLine line = null;

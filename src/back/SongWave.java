@@ -53,48 +53,47 @@ public class SongWave {
         System.out.println(a);
         for(int i = 0; i < samps; i++)
         {
-            buf[i] = (byte)(127 * Math.sin(i * (2 * Math.PI * freq / (format.getSampleRate()))));
+            buf[i] = (byte)(127 * Math.cos(i * (2 * Math.PI * freq / (format.getSampleRate()))));
         }
         out.write(buf, 0, buf.length);
         out.flush();
     }
 
     public static void main(String[] args) throws Exception {
-        SongWave s = new SongWave(131072);
-        //s.writeToFile(0, 25);
-        s.writeToFile(440, 2048);
-        s.writeToFile(250, 6144);
+        SongWave s = new SongWave(1000);
+
+
+
+        s.writeToFile(392, 200);
+        s.writeToFile(392, 200);
+        s.writeToFile(587, 200);
+        s.writeToFile(698, 200);
+        s.writeToFile(784, 200);
+        s.writeToFile(523, 200);
+        s.writeToFile(587, 200);
+        s.writeToFile(392, 400);
+        s.writeToFile(392, 200);
+        s.writeToFile(523, 200);
+        s.writeToFile(392, 200);
+        s.writeToFile(466, 200);
+        s.writeToFile(392, 200);
+        s.writeToFile(440, 200);
+        s.writeToFile(466, 200);
+        s.writeToFile(349, 200);
+        s.writeToFile(466, 200);
+        s.writeToFile(523, 200);
+        s.writeToFile(698, 400);
+        s.writeToFile(659, 200);
+        s.writeToFile(589, 200);
+        s.writeToFile(659, 400);
+        s.writeToFile(466, 200);
+        s.writeToFile(523, 200);
+        s.writeToFile(659, 400);
+        s.writeToFile(587, 200);
+        s.writeToFile(523, 200);
+        s.writeToFile(466, 200);
 
         s.out.close();
-        /*while(true) {
-            s.play(392, 200);
-            s.play(392, 200);
-            s.play(587, 200);
-            s.play(698, 200);
-            s.play(784, 200);
-            s.play(523, 200);
-            s.play(587, 200);c
-            s.play(392, 400);
-            s.play(392, 200);
-            s.play(523, 200);
-            s.play(392, 200);
-            s.play(466, 200);
-            s.play(392, 200);
-            s.play(440, 200);
-            s.play(466, 200);
-            s.play(349, 200);
-            s.play(466, 200);
-            s.play(523, 200);
-            s.play(698, 400);
-            s.play(659, 200);
-            s.play(589, 200);
-            s.play(659, 400);
-            s.play(466, 200);
-            s.play(523, 200);
-            s.play(659, 400);
-            s.play(587, 200);
-            s.play(523, 200);
-            s.play(466, 200);
-        }*/
+
     }
 }

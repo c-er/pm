@@ -69,15 +69,15 @@ public class FFTPerformer
         }
 
         Collections.sort(list);
-        for(int i = 0; i < 40; i++)
+        for(int i = 0; i < 5; i++)
         {
             Data dat = list.get(i);
             if (dat.index >= 5000)
                 continue;
 
-            System.out.println(dat.index);
+            //System.out.println(dat.index);
         }
 
-        System.out.println();
+        //System.out.println();
     }
 }
