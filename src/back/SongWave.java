@@ -7,9 +7,7 @@ import javax.sound.sampled.SourceDataLine;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 
-/**
- * Created by uday on 3/28/15.
- */
+
 public class SongWave {
     public int time; // time is the duration assigned to one second
     public AudioFormat format;
@@ -63,7 +61,9 @@ public class SongWave {
 
     public static void main(String[] args) throws Exception {
         SongWave s = new SongWave(1000);
-        s.writeToFile(440, 4000);
+        s.writeToFile(100, 25);
+        s.writeToFile(440, 25);
+
         s.out.close();
         /*while(true) {
             s.play(392, 200);
@@ -72,7 +72,7 @@ public class SongWave {
             s.play(698, 200);
             s.play(784, 200);
             s.play(523, 200);
-            s.play(587, 200);
+            s.play(587, 200);c
             s.play(392, 400);
             s.play(392, 200);
             s.play(523, 200);

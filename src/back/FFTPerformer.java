@@ -21,7 +21,7 @@ public class FFTPerformer
 
     public void doWork() throws Exception
     {
-        BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound.rws"));
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound2.rws"));
         byte[] buf = new byte[131072];
 
         int numRead;
@@ -41,10 +41,15 @@ public class FFTPerformer
 
         for(int i = 0; i < data.length; i++)
         {
-            complex[i] = new Complex(data[i] / 128.0, 0);
+            complex[i] = new Complex((data[i] / 128.0) /* hammingWindow(i, data.length)*/, 0);
         }
 
         return complex;
+    }
+
+    private static double hammingWindow(int n, int frameSize)
+    {
+        return 0.54 - 0.46 * Math.cos(2.0 * Math.PI * (double) n / (double) (frameSize - 1));
     }
 
     public void doFFT(Complex[] data)
@@ -61,10 +66,13 @@ public class FFTPerformer
         }
 
         Collections.sort(list);
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 40; i++)
         {
             Data dat = list.get(i);
-            System.out.println(dat.index);
+            if(dat.index >= 5000)
+                continue;
+
+            System.out.println(dat.index); // 1/32 of a buffer
         }
 
     }
