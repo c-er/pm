@@ -4,15 +4,18 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 
 /**
  * Created by uday on 3/28/15.
  */
 public class SongWave {
     public int time; // time is the duration assigned to one second
-    private AudioFormat format;
-    private SourceDataLine line;
-    private DataLine.Info info;
+    public AudioFormat format;
+    public SourceDataLine line;
+    public DataLine.Info info;
+    public BufferedOutputStream out;
 
     public SongWave(int time)
     {
@@ -23,6 +26,7 @@ public class SongWave {
             line = (SourceDataLine) AudioSystem.getLine(info);
             line.open(format);
             line.start();
+            out = new BufferedOutputStream(new FileOutputStream("sound2.rws"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,14 +41,31 @@ public class SongWave {
         System.out.println(a);
         for(int i = 0; i < samps; i++)
         {
-            buf[i] = (byte)(127 * Math.sin(i * (2 * Math.PI * freq / (format.getSampleRate()))));
+            buf[i] = (byte)(127 * Math.cos(i * (2 * Math.PI * freq / (format.getSampleRate()))));
         }
         line.write(buf, 0, buf.length);
     }
 
-    public static void main(String[] args) {
+    public void writeToFile(double freq, int dur) throws Exception
+    {
+        int samps = (int)(((double)dur/time) * format.getSampleRate());
+        System.out.println(samps);
+        byte buf[] = new byte[samps];
+        double a = 2 * Math.PI * freq;
+        System.out.println(a);
+        for(int i = 0; i < samps; i++)
+        {
+            buf[i] = (byte)(127 * Math.cos(i * (2 * Math.PI * freq / (format.getSampleRate()))));
+        }
+        out.write(buf, 0, buf.length);
+        out.flush();
+    }
+
+    public static void main(String[] args) throws Exception {
         SongWave s = new SongWave(1000);
-        while(true) {
+        s.writeToFile(440, 4000);
+        s.out.close();
+        /*while(true) {
             s.play(392, 200);
             s.play(392, 200);
             s.play(587, 200);
@@ -73,6 +94,6 @@ public class SongWave {
             s.play(587, 200);
             s.play(523, 200);
             s.play(466, 200);
-        }
+        }*/
     }
 }
