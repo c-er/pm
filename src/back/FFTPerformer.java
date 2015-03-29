@@ -13,6 +13,7 @@ public class FFTPerformer
 {
     public FastFourierTransformer fft = new FastFourierTransformer(DftNormalization.STANDARD);
     public PrintWriter out;
+    public PrintWriter out2;
 
     public static void main(String[] args) throws Exception
     {
@@ -33,13 +34,15 @@ public class FFTPerformer
 
     public void doWork() throws Exception
     {
-        out = new PrintWriter(new BufferedWriter(new FileWriter("sound.fft")));
+        //out = new PrintWriter(new BufferedWriter(new FileWriter("sound.fft")));
+        out2 = new PrintWriter(new BufferedWriter(new FileWriter("sound.fftr")));
         BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound.rws"));
         byte[] buf = new byte[131072];
 
         int numRead;
         String prev = "";
         String tot = "";
+        int count = 1;
         while (true)
         {
 
@@ -50,16 +53,23 @@ public class FFTPerformer
             int pos = 0;
 
             String freq = doFFT(data);
-            System.out.println(freq);
+            if(!freq.equals(""))
+            {
+                System.out.println(freq);
+                out2.print(filter(freq));
+                out2.flush();
+            }
+
             if(!prev.equals(freq))
             {
-                out.print(filter(freq));
+                //out.print(filter(freq));
             }
+
             prev = freq;
         }
 
-
-        out.close();
+        out2.close();
+        //out.close();
 
     }
 

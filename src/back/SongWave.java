@@ -56,17 +56,116 @@ public class SongWave {
         out.flush();
     }
 
-    public void song1()
+    public void song3()
+    {
+
+    }
+
+    public void song2()
     {
         this.play(392, 200);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(523, 200);
+        this.play(587, 400);
+        this.play(784, 400);
+        this.play(698, 400);
+        this.play(587, 400);
+        this.play(659, 800);
+
+        this.play(698, 400);
+        this.play(587, 200);
+        this.play(659, 200);
+        this.play(698, 400);
+        this.play(659, 200);
+        this.play(587, 200);
+        this.play(440, 400);
+        this.play(466, 400);
+        this.play(440, 800);
+
         this.play(392, 200);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(523, 200);
+        this.play(466, 400);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(523, 400);
+        this.play(466, 200);
+        this.play(440, 200);
+        this.play(392, 800);
+
+        this.play(523, 400);
+        this.play(466, 200);
+        this.play(440, 200);
+        this.play(392, 400);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(523, 400);
+        this.play(466, 200);
+        this.play(523, 200);
+        this.play(587, 200);
+        this.play(523, 200);
+        this.play(466, 200);
+        this.play(440, 200);
+
+        // bruh
+
+        this.play(392, 200);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(523, 200);
+        this.play(587, 400);
+        this.play(784, 400);
+        this.play(698, 400);
+        this.play(587, 400);
+        this.play(659, 800);
+
+        this.play(698, 400);
+        this.play(587, 200);
+        this.play(659, 200);
+        this.play(698, 400);
+        this.play(659, 200);
+        this.play(587, 200);
+        this.play(440, 400);
+        this.play(466, 400);
+        this.play(440, 800);
+
+        this.play(392, 200);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(523, 200);
+        this.play(466, 400);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(523, 400);
+        this.play(466, 200);
+        this.play(440, 200);
+        this.play(392, 800);
+
+        this.play(523, 400);
+        this.play(466, 200);
+        this.play(440, 200);
+        this.play(392, 400);
+        this.play(440, 200);
+        this.play(466, 200);
+        this.play(523, 400);
+        this.play(466, 200);
+        this.play(523, 200);
+        this.play(587, 800);
+    }
+
+    public void song1()
+    {
+        this.play(392, 400);
+        //this.play(392, 200);
         this.play(587, 200);
         this.play(698, 200);
         this.play(784, 200);
         this.play(523, 200);
         this.play(587, 200);
-        this.play(392, 400);
-        this.play(392, 200);
+        this.play(392, 600);
+        //this.play(392, 200);
         this.play(523, 200);
         this.play(392, 200);
         this.play(466, 200);
@@ -89,11 +188,11 @@ public class SongWave {
     }
 
     public static void main(String[] args) throws Exception {
-        /*SongWave s = new SongWave(1000);
+        SongWave s = new SongWave(1250);
 
 
 
-        s.play(392, 200);
+        /*s.play(392, 200);
         s.play(392, 200);
         s.play(587, 200);
         s.play(698, 200);
@@ -123,13 +222,16 @@ public class SongWave {
         s.play(466, 200);
 
         s.out.close();*/
+        //s.song2();
+        s.song1();
+        s.song1();
         TargetDataLine line = null;
         AudioFormat format = new AudioFormat(131072, 8, 1, true, false);
         DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
 
         // System.out.println("Step1");
 
-        if (!AudioSystem.isLineSupported(info)) {
+        /*if (!AudioSystem.isLineSupported(info)) {
             System.out.println("Too high sample rate");
             System.exit(-2);
         }
@@ -151,7 +253,7 @@ public class SongWave {
             {
                 System.out.println(buf[i]);
             }
-        }
+        }*/
 
     }
 }

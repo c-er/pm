@@ -4,6 +4,10 @@ package back;
  * Created by uday on 3/28/15.
  */
 
+import abc.notation.Tune;
+import abc.parser.TuneParser;
+import abc.ui.swing.JScoreComponent;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
@@ -11,27 +15,40 @@ import javax.sound.sampled.TargetDataLine;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
+import java.io.*;
+import java.util.StringTokenizer;
 
 public class SoundRecorder extends JFrame implements ActionListener {
 
 
     static Recorder r;
+    JLabel lab;
     public SoundRecorder()
     {
         NoteDictionary.populate();
-        this.setSize(400, 300);
+        this.setSize(500, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-        this.setTitle("RawSoundRecorder");
+        this.setTitle("Project Marmalade");
 
-        JButton butt = new JButton("Start");
-        butt.setSize(100, 50);
+        lab = new JLabel();
+        lab.setSize(300, 25);
+
+        JButton butt1 = new JButton("Song1");
+        JButton butt2 = new JButton("Song2");
+        butt1.setSize(100, 50);
+        butt2.setSize(100, 50);
         this.setLayout(null);
-        this.add(butt);
-        butt.setLocation(150, 125);
-        butt.addActionListener(this);
+        this.add(butt1);
+        this.add(butt2);
+        this.add(lab);
+        butt1.setLocation(100, 150);
+        butt2.setLocation(300, 150);
+        lab.setLocation(100, 250);
+        lab.setHorizontalAlignment(SwingConstants.CENTER);
+        lab.setText("Waiting for thine input");
+        butt1.addActionListener(this);
+        butt2.addActionListener(this);
     }
 
 
@@ -58,30 +75,148 @@ public class SoundRecorder extends JFrame implements ActionListener {
         if(e.getSource() instanceof JButton)
         {
             b = (JButton)e.getSource();
-            if(b.getText().equals("Start"))
+            if(b.getText().equals("Song1"))
             {
-                b.setText("Stop");
+                lab.setText("Playing/Capturing");
+                lab.repaint();
                 r.start();
                 SongWave s = new SongWave(1250);
 
+
                 s.song1();
+                s.song1();
+                //s.song2();
                 try {
                     s.out.close();
                 } catch (Exception a) {}
                 r.go = false;
-                b.setText("Start");
-
-                try {
-                    new FFTPerformer().doWork();
-                } catch (Exception a) {}
-
-
             }
-            else
+            else if(b.getText().equals("Song2"))
             {
-                b.setText("Start");
+                lab.setText("Playing/Capturing");
+                lab.repaint();
+                r.start();
+                SongWave s = new SongWave(1250);
+
+                //s.song1();
+                //s.song1();
+
+                s.song2();
+                try {
+                    s.out.close();
+                } catch (Exception a) {}
                 r.go = false;
             }
+            try {
+                lab.setText("FFTing");
+                lab.repaint();
+                new FFTPerformer().doWork();
+                lab.setText("Smoothing");
+                lab.repaint();;
+                BufferedReader in = new BufferedReader(new FileReader("sound.fftr"));
+                PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("sound.fft2")));
+                String prev = in.readLine();
+                String str;
+                int count = 1;
+                while(true)
+                {
+                    str = in.readLine();
+                    if(str == null)
+                        break;
+                    if(!str.equals(prev))
+                    {
+                        out.println(prev + " x " + count);
+                        count = 1;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+
+                    prev = str;
+                } // 40
+                out.println(prev + " x " + count);
+                out.close();
+                in.close();
+
+                in = new BufferedReader(new FileReader("sound.fft2"));
+                out = new PrintWriter(new BufferedWriter(new FileWriter("sound.fftf")));
+
+                while(true)
+                {
+                    str = in.readLine();
+                    if(str == null)
+                        break;
+                    StringTokenizer st = new StringTokenizer(str);
+                    String n = st.nextToken();
+                    st.nextToken();
+                    int i = Integer.parseInt(st.nextToken());
+                    if(i != 1)
+                    {
+                        i = i + 1;
+                        if(i / 5 == 0)
+                        {
+                        }
+                        else
+                        {
+                            out.println(n + " " + i / 5);
+                        }
+                    }
+                }
+
+                out.close();
+                in.close();
+
+                in = new BufferedReader(new FileReader("sound.fftf"));
+
+                lab.setText("Scoring");
+
+                String tuneAsString = "X:2\nT:A simple scale exercise\nK:C\nL:1/8\nM:4/4\n";
+                String line;
+                int notes = 0;
+                while(true)
+                {
+                    notes++;
+                    line = in.readLine();
+                    if(line == null)
+                    {
+                        break;
+                    }
+                    StringTokenizer st = new StringTokenizer(line);
+                    String note = st.nextToken();
+                    int num = Integer.parseInt(st.nextToken());
+                    char n = note.charAt(0);
+                    String app = "";
+                    if(note.charAt(2) == '5')
+                    {
+                        n = Character.toLowerCase(n);
+                    }
+                    if(note.charAt(1) == 'N')
+                    {
+                        app = "=";
+                    }
+                    else if(note.charAt(1) == 'S')
+                    {
+                        app = "^";
+                    }
+                    app += "" + n + num;
+                    if(notes == 40)
+                    {
+                        app += "\n";
+                    }
+                    tuneAsString += app;
+                }
+                tuneAsString += "\n";
+                System.out.println(tuneAsString);
+                Tune tune = new TuneParser().parse(tuneAsString);
+                JScoreComponent scoreUI =new JScoreComponent();
+                scoreUI.setTune(tune);
+                JFrame j = new JFrame();
+                j.add(scoreUI);
+                j.pack();
+                j.setVisible(true);
+
+            } catch (Exception a) {}
         }
     }
 }
