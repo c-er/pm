@@ -16,6 +16,7 @@ public class FFTPerformer
 
     public static void main(String[] args) throws Exception
     {
+        NoteDictionary.populate();
         new FFTPerformer().doWork();
     }
 
@@ -69,15 +70,17 @@ public class FFTPerformer
         }
 
         Collections.sort(list);
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 40; i++)
         {
             Data dat = list.get(i);
             if (dat.index >= 5000)
                 continue;
-
-            //System.out.println(dat.index);
+            else {
+                System.out.println(NoteDictionary.getNote(dat.index));
+                break;
+            }
         }
 
-        //System.out.println();
+        System.out.println();
     }
 }
