@@ -14,6 +14,11 @@ public class FFTPerformer
 {
     public FastFourierTransformer fft = new FastFourierTransformer(DftNormalization.STANDARD);
 
+    public static void main(String[] args) throws Exception
+    {
+        new FFTPerformer().doWork();
+    }
+
     public void doWork() throws Exception
     {
         BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound.rws"));
