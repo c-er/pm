@@ -1,6 +1,9 @@
 package back;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 
@@ -25,6 +28,47 @@ public class SongWave {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void play2(double f1, double f2, int dur)
+    {
+        int samps = (int)(((double)dur/time) * format.getSampleRate());
+        System.out.println(samps);
+        byte buf[] = new byte[samps];
+        double a1 = 2 * Math.PI * f1;
+        double a2 = 2 * Math.PI * f2;
+        // System.out.println(a);
+        for(int i = 0; i < samps; i++)
+        {
+            buf[i] = (byte)(((byte)(127 * Math.cos(i * (2 * Math.PI * f1 / (format.getSampleRate())))) + (byte)(127 * Math.cos(i * (2 * Math.PI * f2 / (format.getSampleRate()))))) / 2);
+        }
+        line.write(buf, 0, buf.length);
+    }
+
+    public void playChord(Frequency freq[], int dur)
+    {
+        int samps = (int)(((double)dur/time) * format.getSampleRate());
+        byte buf[] = new byte[samps];
+        double maxweight = 0;
+        double totweight = 0;
+        for(int i = 0; i < freq.length; i++)
+        {
+            totweight += freq[i].weight;
+            if(freq[i].weight > maxweight)
+            {
+                maxweight = freq[i].weight;
+            }
+        }
+        for(int i = 0; i < samps; i++)
+        {
+            double val = 0;
+            for(int j = 0; j < freq.length; j++)
+            {
+                val += (freq[j].weight / maxweight) * (127 * Math.cos(i * (2 * Math.PI * freq[j].freq / (format.getSampleRate()))));
+            }
+            buf[i] = (byte)(val / (totweight / maxweight));
+        }
+        line.write(buf, 0, buf.length);
     }
 
     public void play(double freq, int dur)  //plays note with frequency freq for duration dur
@@ -54,11 +98,6 @@ public class SongWave {
         }
         out.write(buf, 0, buf.length);
         out.flush();
-    }
-
-    public void song3()
-    {
-
     }
 
     public void song2()
@@ -190,6 +229,13 @@ public class SongWave {
     public static void main(String[] args) throws Exception {
         SongWave s = new SongWave(1250);
 
+        //s.play2(392, 587.33, 1250);
+        Frequency[] f = new Frequency[3];
+        f[0] = new Frequency(392, Math.random());
+        f[1] = new Frequency(783.99, Math.random());
+        f[2] = new Frequency(196, 1);
+        s.playChord(f, 1250);
+
 
 
         /*s.play(392, 200);
@@ -223,11 +269,11 @@ public class SongWave {
 
         s.out.close();*/
         //s.song2();
-        s.song1();
+        /*s.song1();
         s.song1();
         TargetDataLine line = null;
         AudioFormat format = new AudioFormat(131072, 8, 1, true, false);
-        DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
+        DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);*/
 
         // System.out.println("Step1");
 
@@ -255,5 +301,16 @@ public class SongWave {
             }
         }*/
 
+    }
+}
+
+class Frequency {
+    double freq;
+    double weight;
+
+    public Frequency(double freq, double weight)
+    {
+        this.freq = freq;
+        this.weight = weight;
     }
 }

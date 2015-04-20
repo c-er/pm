@@ -109,10 +109,13 @@ public class SoundRecorder extends JFrame implements ActionListener {
             }
             try {
                 lab.setText("FFTing");
+                System.out.println("FFTING");
                 lab.repaint();
-                new FFTPerformer().doWork();
+                FFTThread.doWork();
+                //new FFTPerformer().doWork();
                 lab.setText("Smoothing");
-                lab.repaint();;
+                System.out.println("Smoothing");
+                lab.repaint();
                 BufferedReader in = new BufferedReader(new FileReader("sound.fftr"));
                 PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("sound.fft2")));
                 String prev = in.readLine();

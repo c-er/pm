@@ -37,7 +37,7 @@ public class FFTPerformer
         //out = new PrintWriter(new BufferedWriter(new FileWriter("sound.fft")));
         out2 = new PrintWriter(new BufferedWriter(new FileWriter("sound.fftr")));
         BufferedInputStream in = new BufferedInputStream(new FileInputStream("sound.rws"));
-        byte[] buf = new byte[131072];
+        byte[] buf = new byte[65536];
 
         int numRead;
         String prev = "";
