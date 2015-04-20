@@ -55,7 +55,7 @@ public class SoundRecorder extends JFrame implements ActionListener {
 
     public static void main(String args[]) throws Exception
     {
-        r = new Recorder();
+        //r = new Recorder();
         new SoundRecorder();
 
         /*System.out.println("Press ENTER to start: ");
@@ -72,6 +72,7 @@ public class SoundRecorder extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         JButton b;
+        r = new Recorder();
         if(e.getSource() instanceof JButton)
         {
             b = (JButton)e.getSource();

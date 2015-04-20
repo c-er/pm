@@ -232,8 +232,8 @@ public class SongWave {
         //s.play2(392, 587.33, 1250);
         Frequency[] f = new Frequency[3];
         f[0] = new Frequency(392, Math.random());
-        f[1] = new Frequency(783.99, Math.random());
-        f[2] = new Frequency(196, 1);
+        f[1] = new Frequency(466.16, Math.random());
+        f[2] = new Frequency(587.33, Math.random());
         s.playChord(f, 1250);
 
 
