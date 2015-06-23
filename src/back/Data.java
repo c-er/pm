@@ -28,4 +28,9 @@ public class Data implements Comparable<Data>
 
         return 0;
     }
+
+    public String toString()
+    {
+        return index + ": " + magnitude;
+    }
 }

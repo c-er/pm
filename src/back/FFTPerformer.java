@@ -17,7 +17,7 @@ public class FFTPerformer
 
     public static void main(String[] args) throws Exception
     {
-        NoteDictionary.populate();
+        //NoteDictionary.populate();
 
         new FFTPerformer().doWork();
     }

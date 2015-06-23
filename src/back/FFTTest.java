@@ -39,7 +39,7 @@ public class FFTTest {
     }
 
     public static void main(String[] args) {
-        NoteDictionary.populate();
+        //NoteDictionary.populate();
         Scanner sc = new Scanner(System.in);
         System.out.println("Press ENTER to start");
         sc.nextLine();

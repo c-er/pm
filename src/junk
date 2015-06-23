@@ -1,0 +1,69 @@
+/*public static void main(String[] args) {
+        try {
+            AudioFormat format = new AudioFormat(131072, 8, 1, true, false);
+            DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+            SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
+            line.open(format);
+            byte total[] = new byte[131072];
+            for(int i = 0; i < total.length / 2048; i++)
+            {
+                byte a[] = createSineWave(440, 2048, format);
+                System.arraycopy(a, 0, total, 2048 * i, 2048);
+            }
+            line.start();
+            total = createSineWave(440, 131072, format);
+            line.write(total, 0, total.length);
+        } catch (Exception e) {
+
+        }
+
+    }*/
+
+    /*public static void main(String[] args) {
+        try {
+            AudioFormat format = new AudioFormat(131072, 8, 1, true, false);
+            DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+            SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
+            line.open(format);
+            byte test[] = createSineWave(440, 2048, format);
+            byte play[] = new byte[131072];
+            for(int i = 0; i < test.length; i++)
+            {
+                play[i] = test[i];
+            }
+
+            line.start();
+            System.out.println("Enter to do cool shit");
+            new Scanner(System.in).nextLine();
+            line.write(play, 0, 131072);
+            Complex fft[] = doFFT(play);
+
+
+            ArrayList<Data> a = new ArrayList<Data>();
+
+            for(int i = 0; i < fft.length; i++)
+            {
+                a.add(new Data(fft[i].abs(), i));
+            }
+
+            Collections.sort(a);
+
+            for(int i = 0; i < 20; i++)
+            {
+                System.out.println(a.get(i));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
+    /*public static void main (String[] arg) {
+            String tuneAsString = "X:2\nT:A simple scale exercise\nL:1/8\nK:C\nM:4/4\n^C2DEF|GABc|defg|gfed|cBAG|FEDC\n";
+            Tune tune = new TuneParser().parse(tuneAsString);
+            JScoreComponent scoreUI =new JScoreComponent();
+            scoreUI.setTune(tune);
+            JFrame j = new JFrame();
+            j.add(scoreUI);
+            j.pack();
+            j.setVisible(true);
+        }*/

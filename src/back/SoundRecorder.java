@@ -25,7 +25,7 @@ public class SoundRecorder extends JFrame implements ActionListener {
     JLabel lab;
     public SoundRecorder()
     {
-        NoteDictionary.populate();
+        //NoteDictionary.populate();
         this.setSize(500, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -71,6 +71,8 @@ public class SoundRecorder extends JFrame implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
+
+        //int bpm = Integer.parseInt(JOptionPane.showInputDialog("BPM Pl0x"));
         JButton b;
         r = new Recorder();
         if(e.getSource() instanceof JButton)
@@ -84,8 +86,8 @@ public class SoundRecorder extends JFrame implements ActionListener {
                 SongWave s = new SongWave(1250);
 
 
-                s.song1();
-                s.song1();
+                //s.song1();
+                //s.song1();
                 //s.song2();
                 try {
                     s.out.close();
@@ -102,7 +104,7 @@ public class SoundRecorder extends JFrame implements ActionListener {
                 //s.song1();
                 //s.song1();
 
-                s.song2();
+                //s.song2();
                 try {
                     s.out.close();
                 } catch (Exception a) {}
@@ -112,7 +114,7 @@ public class SoundRecorder extends JFrame implements ActionListener {
                 lab.setText("FFTing");
                 System.out.println("FFTING");
                 lab.repaint();
-                FFTThread.doWork();
+                //FFTThread.doWork();
                 //new FFTPerformer().doWork();
                 lab.setText("Smoothing");
                 System.out.println("Smoothing");

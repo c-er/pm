@@ -6,17 +6,17 @@ import java.util.ArrayList;
  */
 public class NoteDictionary
 {
-    static ArrayList<Note> notes;
-    public static void populate()
+    static ArrayList<Note> notes = populate();
+    private static ArrayList<Note> populate()
     {
-        notes = new ArrayList<Note>();
+        ArrayList<Note> ret = new ArrayList<>();
         for(byte i = 0; i <= 96; i++) {
             // c0 = 16.35159783
 
-            notes.add(new Note(i, 16.35159783 * Math.pow(2, i/12.0)));
+            ret.add(new Note(i, 16.35159783 * Math.pow(2, i/12.0)));
             // System.out.println(i + ": " + 16.35159783 * Math.pow(2, i/12.0));
         }
-
+        return ret;
     }
 
     public static String getNote(double frequency)
@@ -25,26 +25,53 @@ public class NoteDictionary
         String ret = "";
         switch(name % 12)
         {
-            case 0: ret = "CN"; break;
-            case 1: ret = "CS"; break;
-            case 2: ret = "DN"; break;
-            case 3: ret = "DS"; break;
-            case 4: ret = "EN"; break;
-            case 5: ret = "FN"; break;
-            case 6: ret = "FS"; break;
-            case 7: ret = "GN"; break;
-            case 8: ret = "GS"; break;
-            case 9: ret = "AN"; break;
-            case 10: ret = "AS"; break;
-            case 11: ret = "BN"; break;
+            case 0: ret = "=C"; break;
+            case 1: ret = "^C"; break;
+            case 2: ret = "=D"; break;
+            case 3: ret = "^D"; break;
+            case 4: ret = "=E"; break;
+            case 5: ret = "=F"; break;
+            case 6: ret = "^F"; break;
+            case 7: ret = "=G"; break;
+            case 8: ret = "^G"; break;
+            case 9: ret = "=A"; break;
+            case 10: ret = "^A"; break;
+            case 11: ret = "=B"; break;
         }
         ret += name/12;
         return ret;
     }
 
     public static void main(String[] args) {
-        NoteDictionary.populate();
-        System.out.println(getNote(399));
+        System.out.println(getClosest(555));
+    }
+
+    public static double getClosest(double freq)
+    {
+        for(int i = 0; i < notes.size(); i++)
+        {
+            if(notes.get(i).freq > freq)
+            {
+                if(i == 0)
+                {
+                    return notes.get(i).freq;
+                }
+                else
+                {
+                    double diffabove = Math.abs(notes.get(i).freq - freq);
+                    double diffbelow = Math.abs(notes.get(i - 1).freq - freq);
+                    if(Math.min(diffabove, diffbelow) == diffbelow)
+                    {
+                        return notes.get(i - 1).freq;
+                    }
+                    else
+                    {
+                        return notes.get(i).freq;
+                    }
+                }
+            }
+        }
+        return notes.get(notes.size() - 1).freq;
     }
 
     public static byte getName(double frequency)

@@ -100,7 +100,7 @@ public class SongWave {
         out.flush();
     }
 
-    public void song2()
+    public void song2() throws Exception
     {
         this.play(392, 200);
         this.play(440, 200);
@@ -147,10 +147,58 @@ public class SongWave {
         this.play(523, 200);
         this.play(466, 200);
         this.play(440, 200);
+
+
+
+        this.writeToFile(392, 200);
+        this.writeToFile(440, 200);
+        this.writeToFile(466, 200);
+        this.writeToFile(523, 200);
+        this.writeToFile(587, 400);
+        this.writeToFile(784, 400);
+        this.writeToFile(698, 400);
+        this.writeToFile(587, 400);
+        this.writeToFile(659, 800);
+
+        this.writeToFile(698, 400);
+        this.writeToFile(587, 200);
+        this.writeToFile(659, 200);
+        this.writeToFile(698, 400);
+        this.writeToFile(659, 200);
+        this.writeToFile(587, 200);
+        this.writeToFile(440, 400);
+        this.writeToFile(466, 400);
+        this.writeToFile(440, 800);
+
+        this.writeToFile(392, 200);
+        this.writeToFile(440, 200);
+        this.writeToFile(466, 200);
+        this.writeToFile(523, 200);
+        this.writeToFile(466, 400);
+        this.writeToFile(440, 200);
+        this.writeToFile(466, 200);
+        this.writeToFile(523, 400);
+        this.writeToFile(466, 200);
+        this.writeToFile(440, 200);
+        this.writeToFile(392, 800);
+
+        this.writeToFile(523, 400);
+        this.writeToFile(466, 200);
+        this.writeToFile(440, 200);
+        this.writeToFile(392, 400);
+        this.writeToFile(440, 200);
+        this.writeToFile(466, 200);
+        this.writeToFile(523, 400);
+        this.writeToFile(466, 200);
+        this.writeToFile(523, 200);
+        this.writeToFile(587, 200);
+        this.writeToFile(523, 200);
+        this.writeToFile(466, 200);
+        this.writeToFile(440, 200);
 
         // bruh
 
-        this.play(392, 200);
+        /*this.play(392, 200);
         this.play(440, 200);
         this.play(466, 200);
         this.play(523, 200);
@@ -191,50 +239,88 @@ public class SongWave {
         this.play(523, 400);
         this.play(466, 200);
         this.play(523, 200);
-        this.play(587, 800);
+        this.play(587, 800);*/
     }
 
-    public void song1()
+    public void song1() throws Exception
     {
-        this.play(392, 400);
-        //this.play(392, 200);
-        this.play(587, 200);
-        this.play(698, 200);
-        this.play(784, 200);
-        this.play(523, 200);
-        this.play(587, 200);
-        this.play(392, 600);
-        //this.play(392, 200);
-        this.play(523, 200);
-        this.play(392, 200);
-        this.play(466, 200);
-        this.play(392, 200);
-        this.play(440, 200);
-        this.play(466, 200);
-        this.play(349, 200);
-        this.play(466, 200);
-        this.play(523, 200);
-        this.play(698, 400);
-        this.play(659, 200);
-        this.play(589, 200);
-        this.play(659, 400);
-        this.play(466, 200);
-        this.play(523, 200);
-        this.play(659, 400);
-        this.play(587, 200);
-        this.play(523, 200);
-        this.play(466, 200);
+        this.play(392, 652 * 2);
+        //this.play(392, 652);
+        this.play(587, 652);
+        this.play(698, 652);
+        this.play(784, 652);
+        this.play(523, 652);
+        this.play(587, 652);
+        this.play(392, 652 * 3);
+        //this.play(392, 652);
+        this.play(523, 652);
+        this.play(392, 652);
+        this.play(466, 652);
+        this.play(392, 652);
+        this.play(440, 652);
+        this.play(466, 652);
+        this.play(349, 652);
+        this.play(466, 652);
+        this.play(523, 652);
+        this.play(698, 652 * 2);
+        this.play(659, 652);
+        this.play(589, 652);
+        this.play(659, 652 * 2);
+        this.play(466, 652);
+        this.play(523, 652);
+        this.play(659, 652 * 2);
+        this.play(587, 652);
+        this.play(523, 652);
+        this.play(466, 652);
+
+        this.writeToFile(392, 652 * 2);
+        //this.writeToFile(392, 652);
+        this.writeToFile(587, 652);
+        this.writeToFile(698, 652);
+        this.writeToFile(784, 652);
+        this.writeToFile(523, 652);
+        this.writeToFile(587, 652);
+        this.writeToFile(392, 652 * 3);
+        //this.writeToFile(392, 652);
+        this.writeToFile(523, 652);
+        this.writeToFile(392, 652);
+        this.writeToFile(466, 652);
+        this.writeToFile(392, 652);
+        this.writeToFile(440, 652);
+        this.writeToFile(466, 652);
+        this.writeToFile(349, 652);
+        this.writeToFile(466, 652);
+        this.writeToFile(523, 652);
+        this.writeToFile(698, 652 * 2);
+        this.writeToFile(659, 652);
+        this.writeToFile(589, 652);
+        this.writeToFile(659, 652 * 2);
+        this.writeToFile(466, 652);
+        this.writeToFile(523, 652);
+        this.writeToFile(659, 652 * 2);
+        this.writeToFile(587, 652);
+        this.writeToFile(523, 652);
+        this.writeToFile(466, 652);
     }
 
     public static void main(String[] args) throws Exception {
         SongWave s = new SongWave(1250);
+        
+        s.out = new BufferedOutputStream(new FileOutputStream("sound.rws"));
+
+        s.song1();
+        
 
         //s.play2(392, 587.33, 1250);
-        Frequency[] f = new Frequency[3];
-        f[0] = new Frequency(392, Math.random());
-        f[1] = new Frequency(466.16, Math.random());
-        f[2] = new Frequency(587.33, Math.random());
-        s.playChord(f, 1250);
+        //Frequency[] f = new Frequency[15];
+        //f[0] = new Frequency(392, Math.random());
+        //f[1] = new Frequency(466.16, Math.random());
+        //f[2] = new Frequency(587.33, Math.random());
+        //for(int i = 0; i < 15; i++)
+        //{
+        //    f[i] = new Frequency(16.35 * Math.pow(2, i), Math.random());
+        //}
+       // s.playChord(f, 2500);
 
 
 
